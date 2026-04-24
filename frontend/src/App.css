@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+@theme {
+    --font-main: "Lato", sans-serif;
+    --color-mango: #eebb44;
+    --color-off-black: #1f1f1f;
+    --color-rouge: #CC2200;
+}
