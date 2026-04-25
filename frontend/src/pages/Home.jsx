@@ -5,8 +5,9 @@ import VerticalRule from "../components/VerticalRule";
 import LinkButton from "../components/LinkButton";
 import PeopleBadge from "../assets/People.svg";
 import StopWatchBadge from "../assets/Stopwatch.svg";
-import CloudHeader from "../assets/sky.jpg"
+import CloudHeader from "../assets/banners/sky-1.jpg"
 import EventsTables from "../components/EventsTables";
+import ClipboardBadge from "../assets/Clipboard.svg";
 
 const Home = () => {
     return (
@@ -37,7 +38,7 @@ const Home = () => {
                     <VerticalRule length={75}/>
                     <HeroStatTracker statNumber={"200,000"}  statCriteria={"Scores Published"}/>
                     <VerticalRule length={75}/>
-                    <HeroStatTracker statNumber={"60"} statCriteria={"Championships \n Managed"}/>
+                    <HeroStatTracker statNumber={"60"} statCriteria={"Championships \n Managed"} displayIcon={ClipboardBadge}/>
                     <VerticalRule length={75}/>
                     <HeroStatTracker/>
                 </div>
@@ -47,9 +48,9 @@ const Home = () => {
                     <img className="w-full h-full object-cover" src={CloudHeader}/>
                 </div>
                 <div className="relative w-full h-full p-22 pl-35 pb-0">
-                    <h2 className="uppercase text-5xl font-main font-bold text-white">Upcoming Events</h2>
+                    <h2 className="uppercase text-5xl font-main font-bold text-white italic">Upcoming Events</h2>
                 </div>
-                <div className="pl-25 pr-25 mt-10">
+                <div className="relative w pl-25 pr-25 pt-10 pb-20">
                     <EventsTables/>
                 </div>
             </div>

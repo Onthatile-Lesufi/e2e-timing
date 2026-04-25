@@ -10,6 +10,8 @@ import Home from './pages/Home'
 import Events from './pages/Events'
 import Event from './pages/Event'
 import Contact from './pages/Contact'
+import Athletes from './pages/Athletes'
+import Athlete from './pages/Athlete'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path = '/events' element = {<Events/>}/>
           <Route path = '/events/:event' element = {<Event/>}/>
           <Route path = '/contact' element = {<Contact/>}/>
+          <Route path = '/athletes' element = {<Athletes/>}/>
+          <Route path = '/athletes/:athlete' element = {<Athlete/>}/>
         </Routes>
         <Footer/>
       </Router>
