@@ -19,6 +19,13 @@ const EventsTables = () => {
       setDisplayEvents(events);
     },[])
 
+    function GetFilterName (filter) {
+        setFilterName(filter);
+        if (filter.length <= 0) {
+            SetEventsByName();
+        }
+    }
+
     function SetEventsByName () {
         // const _safeValues = events.map(_event => _event.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
         const _safeInput = filterName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -46,10 +53,10 @@ const EventsTables = () => {
                   <path d="m21 21-4.3-4.3"></path>
                 </g>
               </svg>
-              <input type="search" className="grow" placeholder="Search" onChange={(e) => setFilterName(e.target.value)}/>
+              <input type="search" className="grow" placeholder="Search" onChange={(e) => GetFilterName(e.target.value)}/>
             </label>
 
-            <button className="btn" onClick={SetEventsByName}>Filter</button>
+            <button className="btn ml-5 border rounded-lg border-rouge bg-rouge text-white" onClick={SetEventsByName}>Filter</button>
           </div>
           <table className="table table-zebra mb-5">
             <thead className="[&_th]:border-b [&_th]:border-gray-300 text-black">

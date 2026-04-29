@@ -1,5 +1,6 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import StatusTypes from "../utilities/StatusTypes";
 
 const MainEventsTable = () => {
     const [ filterName, setFilterName ] = useState("");
@@ -10,11 +11,16 @@ const MainEventsTable = () => {
         date: "25/04/2026",
         venue: "University of Johannesburg Rugby Stadium",
         organiser: "Central Gauteng Athletics",
-        path: 1
+        path: 1,
+        status: StatusTypes.UNSTARTED
       }
     ]);
     const [ displayEvents, setDisplayEvents ] = useState([]);
     const navigate = useNavigate();
+
+    function FilterVenueOptions () {
+
+    }
 
     function FirstPage () {
 
@@ -38,8 +44,8 @@ const MainEventsTable = () => {
 
     return (
         <div className="overflow-x-auto bg-white rounded-lg p-6 pt-4 drop-shadow-2xl">
-            <div>
-                <label className="input border rounded-lg border-gray-400 ml-5 bg-gray-50">
+            <div className="w-full h-30 flex items-center">
+                <label className="input border rounded-lg border-gray-400 ml-5 bg-gray-50 float-left">
                     <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g
                           strokeLinejoin="round"
@@ -52,9 +58,22 @@ const MainEventsTable = () => {
                             <path d="m21 21-4.3-4.3"></path>
                         </g>
                     </svg>
-                    <input type="search" className="grow" placeholder="Search" onChange={(e) => setFilterName(e.target.value)}/>
+                    <input type="text" className="grow" placeholder="Search" onChange={(e) => setFilterName(e.target.value)}/>
                 </label>
-                <input type="date" className="input border rounded-lg border-gray-400 ml-5 bg-gray-50"/>
+                <input type="date" className="input border rounded-lg border-gray-400 ml-5 bg-gray-50 float-left"/>
+                <fieldset class="fieldset float-left  ml-5 w-50 -mt-7">
+                    <legend class="fieldset-legend">Sort By</legend>
+                    <select class="select border rounded-lg border-gray-400 bg-gray-50">
+                        <option>Upcoming</option>
+                        <option>Oldest First</option>
+                        <option>Alphabetical Order {"(Asc)"}</option>
+                        <option>Alphabetical Order {"(Desc)"}</option>
+                        <option>Cancelled</option>
+                        <option>Finished</option>
+                        <option>Ongoing</option>
+                    </select>
+                </fieldset>
+                <button className="btn ml-5 border rounded-lg border-rouge bg-rouge text-white float-left">Filter</button>
             </div>
             <table className="table table-zebra mb-5">
                 <thead className="[&_th]:border-b [&_th]:border-gray-300 text-black">
@@ -63,6 +82,7 @@ const MainEventsTable = () => {
                         <th>Date</th>
                         <th>Venue</th>
                         <th>Organiser</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 {/* One single line controls the borders for EVERY cell in the body! */}
@@ -74,6 +94,7 @@ const MainEventsTable = () => {
                       <td>{_event.date}</td>
                       <td>{_event.venue}</td>
                       <td>{_event.organiser}</td>
+                      <td className="font-bold">{_event.status}</td>
                     </tr>
                   ))}
                 </tbody>

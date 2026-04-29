@@ -12,6 +12,9 @@ import Event from './pages/Event'
 import Contact from './pages/Contact'
 import Athletes from './pages/Athletes'
 import Athlete from './pages/Athlete'
+import Results from './pages/Results'
+import AthleteResults from './pages/AthleteResults'
+import EventResults from './pages/EventResults'
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
           <Route path = '/contact' element = {<Contact/>}/>
           <Route path = '/athletes' element = {<Athletes/>}/>
           <Route path = '/athletes/:athlete' element = {<Athlete/>}/>
+          <Route path = '/results/' element = {<Results/>}/>
+          <Route path = '/results/event/:event' element = {<EventResults/>}/>
+          <Route path = '/results/athlete/:event' element = {<AthleteResults/>}/>
         </Routes>
         <Footer/>
       </Router>

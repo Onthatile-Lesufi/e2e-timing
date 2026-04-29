@@ -1,4 +1,4 @@
-const Contact = () => {
+const AthleteResults = () => {
     return (
         <div className="w-full min-h-screen">
 
@@ -6,4 +6,4 @@ const Contact = () => {
     )
 }
 
-export default Contact;
+export default AthleteResults;
