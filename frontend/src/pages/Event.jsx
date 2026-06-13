@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import BannerImg from "../assets/banners/sky-1.jpg";
 import StatusTypes from "../utilities/StatusTypes";
 import EventTimetableSection from "../sub-sections/EventTimetableSection";
 import EventAthleteSection from "../sub-sections/EventAthleteSection";
 import EventResultSection from "../sub-sections/EventResultSection";
 import EventTicketSection from "../sub-sections/EventTicketSection";
+import EventIndividualAthleteSection from "../sub-sections/EventIndividualAthleteSection";
+
+export const ActionContext = createContext(null);
 
 const Event = () => {
     const [ eventDetails, setEventDetails ] = useState(null);
@@ -38,6 +41,10 @@ const Event = () => {
         if (_result === null) return;
         console.log(`Event UpdateTabContents | _results [${_result.label}]`);
         setTabContents(_result.content);
+    }
+
+    function LoadAthlete (incoming) {
+        setTabContents(<EventIndividualAthleteSection athleteId={incoming} />);
     }
 
     function UpdateTabList () {
@@ -87,13 +94,15 @@ const Event = () => {
                     </button>   */}
                 </div>
             </div>
-            <div className="relative w-full h-screen">
+            <div className="relative w-full min-h-screen">
                 <div className=" w-full justify-center items-center flex h-25 bg-rouge">
                     {tabList}
                 </div>
 
-                <div class=" border-base-300 bg-base-100 rounded-box p-6">
-                    <div class="tab-pane">{tabContents}</div>
+                <div class=" border-base-300 bg-base-100 rounded-box p-6 h-fit">
+                    <ActionContext.Provider value={LoadAthlete}>
+                        <div class="tab-pane">{tabContents}</div>
+                    </ActionContext.Provider>
                 </div>
             </div>
         </div>
